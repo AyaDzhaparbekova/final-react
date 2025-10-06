@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Paris Adventure",
+    "country": "France",
+    "duration": 5,
+    "budget": 1200,
+    "type": "city",
+    "description": "Explore the romantic city of Paris: Eiffel Tower, Louvre, and local cafes.",
+    "photos": [
+      "https://source.unsplash.com/400x300/?paris",
+      "https://source.unsplash.com/400x300/?eiffel-tower"
+    ],
+    "weather": "Sunny 22°C"
+  },
+  {
+    "id": 2,
+    "name": "Beach Relaxation in Bali",
+    "country": "Indonesia",
+    "duration": 7,
+    "budget": 900,
+    "type": "beach",
+    "description": "Enjoy tropical beaches, surf, and relax in Bali's paradise.",
+    "photos": [
+      "https://source.unsplash.com/400x300/?bali,beach",
+      "https://source.unsplash.com/400x300/?surf"
+    ],
+    "weather": "Cloudy 28°C"
+  }
+]
