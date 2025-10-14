@@ -7,24 +7,58 @@
     "budget": 1200,
     "type": "city",
     "description": "Explore the romantic city of Paris: Eiffel Tower, Louvre, and local cafes.",
-    "photos": [
-      "https://source.unsplash.com/400x300/?paris",
-      "https://source.unsplash.com/400x300/?eiffel-tower"
-    ],
+    "photos": ["/src/assets/paris.jpg"],
     "weather": "Sunny 22°C"
   },
   {
     "id": 2,
-    "name": "Beach Relaxation in Bali",
+    "name": "Beach Relaxation in ",
     "country": "Indonesia",
     "duration": 7,
     "budget": 900,
     "type": "beach",
-    "description": "Enjoy tropical beaches, surf, and relax in Bali's paradise.",
-    "photos": [
-      "https://source.unsplash.com/400x300/?bali,beach",
-      "https://source.unsplash.com/400x300/?surf"
-    ],
+    "description": "Enjoy tropical beaches, surf, and relax in 's paradise.",
+    "photos": ["/src/assets/bali.jpg"],
     "weather": "Cloudy 28°C"
+  },
+  {
+    "id": 3,
+    "name": "Tokyo City Lights",
+    "country": "Japan",
+    "duration": "6 days",
+    "budget": 1500,
+    "weather": "18°C, Cloudy",
+    "photos": ["/src/assets/tokyo.jpg"],
+    "type": "city"
+  },
+  {
+    "id": 4,
+    "name": "Safari Adventure in Kenya",
+    "country": "Kenya",
+    "duration": "8 days",
+    "budget": 2000,
+    "weather": "28°C, Sunny",
+    "photos": ["/src/assets/kenya.jpg"],
+    "type": "adventure"
+  },
+  {
+    "id": 5,
+    "name": "Northern Lights in Iceland",
+    "country": "Iceland",
+    "duration": "5 days",
+    "budget": 1800,
+    "weather": "-2°C, Snow",
+    "photos": ["/src/assets/iceland.jpg"],
+    "type": "nature"
+  },
+  {
+    "id": 6,
+    "name": "Desert Escape in Dubai",
+    "country": "UAE",
+    "duration": "4 days",
+    "budget": 1100,
+    "weather": "35°C, Hot",
+   "photos": ["/src/assets/dubai.jpg"],
+    "type": "luxury"
   }
 ]

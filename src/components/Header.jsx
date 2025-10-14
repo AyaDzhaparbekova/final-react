@@ -8,7 +8,6 @@ function Header() {
       <nav>
         <Link to='/'>Home</Link> | <Link to='/favorites'>Favorites</Link>
       </nav>
-      <hr />
     </header>
   );
 }
