@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import RouteDetail from './pages/RouteDetail';
 import Favorites from './pages/Favorites';
+import './App.css';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
