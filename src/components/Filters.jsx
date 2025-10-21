@@ -2,7 +2,7 @@ import React from 'react';
 
 function Filters({ filters, setFilters }) {
   return (
-    <div style={{ marginBottom: '10px' }}>
+    <div className="input">
       <label>
         Type:
         <select
@@ -15,7 +15,7 @@ function Filters({ filters, setFilters }) {
           <option value='mountain'>Mountain</option>
         </select>
       </label>
-      <label style={{ marginLeft: '10px' }}>
+      <label style={{ }}>
         Max Budget:
         <input
           type='number'

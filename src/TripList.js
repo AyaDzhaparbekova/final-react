@@ -1,9 +1,11 @@
-import AddDestination from './AddDestination';
+import React, { useState, useEffect } from 'react';
+import AddDestination from './components/AddDestination';
+const API = 'https://your-api-url.com'; // Replace with my actual API URL
+
 function TripList() {
   const [trips, setTrips] = useState([]);
   const [search, setSearch] = useState('');
   const [filterType, setFilterType] = useState('All');
-
 
   async function loadTrips(page = 1, type = 'All', query = '') {
     try {
@@ -24,7 +26,7 @@ function TripList() {
     loadTrips();
   }, []);
 
-  // добавляем компонент формы и                
+                 
 
 
 <AddDestination onAdd={newTrip => setTrips(prev => [newTrip, ...prev])} />;
@@ -33,7 +35,7 @@ return (
     <AddDestination onAdd={(newTrip) => setTrips((prev) => [newTrip, ...prev])} />
 
     <div style={{ marginBottom: 12 }}>
-      <input
+      <
         placeholder="Search city..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}

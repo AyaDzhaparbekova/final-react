@@ -3,7 +3,7 @@ import RouteCard from './RouteCard';
 
 function RouteList({ routes, toggleFavorite, favorites }) {
   return (
-    <div>
+    <div className='route-container'>
       {routes.map(route => (
         <RouteCard
           key={route.id}

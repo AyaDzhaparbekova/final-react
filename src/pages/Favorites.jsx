@@ -7,7 +7,7 @@ function Favorites({ favorites, toggleFavorite }) {
     favorites.includes(route.id)
   );
   return (
-    <div>
+    <div className="favorites">
       <h2>My Favorites</h2>
       {favoriteRoutes.length === 0 ? (
         <p>No favorite routes yet.</p>

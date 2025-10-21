@@ -9,20 +9,19 @@ function RouteDetail() {
   if (!route) return <p>Route not found</p>;
 
   return (
-    <div>
+    <div className='route-detail'>
       <h1>{route.name}</h1>
       <p>{route.description}</p>
       <p>Country: {route.country}</p>
       <p>Duration: {route.duration} days</p>
       <p>Budget: ${route.budget}</p>
       <p>Weather: {route.weather}</p>
-      <div style={{ display: 'flex', gap: '10px' }}>
+      <div>
         {route.photos.map((photo, idx) => (
           <img
             key={idx}
             src={photo}
             alt={route.name}
-            style={{ width: '200px', height: '150px', objectFit: 'cover' }}
           />
         ))}
       </div>
