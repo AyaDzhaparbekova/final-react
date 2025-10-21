@@ -20,7 +20,7 @@ function Home({ favorites, toggleFavorite }) {
   });
 
   return (
-    <div>
+    <div className='routes'>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Filters filters={filters} setFilters={setFilters} />
       <RouteList

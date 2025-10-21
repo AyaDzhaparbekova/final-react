@@ -2,80 +2,71 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function RouteCard({ route, toggleFavorite, favorites }) {
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState('Loading...');
   const isFavorite = favorites.includes(route.id);
 
   useEffect(() => {
     async function fetchWeather() {
       const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-      const city = route.country; 
+      const cityMap = {
+        France: 'Paris',
+        Indonesia: 'Bali',
+        Japan: 'Tokyo',
+        Kenya: 'Nairobi',
+        Iceland: 'Reykjavik',
+        UAE: 'Dubai',
+      };
+      const city = route.city || cityMap[route.country] || route.country;
+
+      if (!apiKey) {
+        console.error('❌ OpenWeather API key не найден (.env)');
+        setWeather('N/A');
+        return;
+      }
+
       try {
         const res = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
         );
         const data = await res.json();
-        if (data.main) {
+
+        if (res.ok && data.main) {
           setWeather(
             `${Math.round(data.main.temp)}°C, ${data.weather[0].main}`
           );
         } else {
+          console.warn('⚠️ Погода не найдена для:', city);
           setWeather('N/A');
         }
       } catch (err) {
-        console.error('Weather fetch error:', err);
+        console.error(err);
         setWeather('N/A');
       }
     }
 
-    if (route.country) fetchWeather();
-  }, [route.country]);
+    fetchWeather();
+  }, [route.country, route.city]);
 
   const photoSrc = route.photos?.[0] || '/src/assets/default.jpg';
 
   return (
-    <div
-      style={{
-      boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-        backgroundColor: '#fff',
-        maxWidth: '500px',
-      }}
-    >
-      <img
-        src={photoSrc}
-        alt={route.name}
-        style={{
-        }}
-      />
+    <div className='route-card'>
+      <img src={photoSrc} alt={route.name} className='route-image' />
 
-      <h3 style={{ marginBottom: '6px', color: '#333' }}>{route.name}</h3>
-      <p style={{  }}>🌍 {route.country}</p>
-      <p style={{ }}>
-        ⏱ Duration: {route.duration} days
-      </p>
-      <p style={{  }}>
-        💰 Budget: ${route.budget}
-      </p>
-      <p style={{ margin: '4px 0', color: '#555' }}>
-        ☀️ Weather: {weather ? weather : 'Loading...'}
-      </p>
+      <h3 className='route-title'>{route.name}</h3>
+      <p className='route-country'>🌍 {route.country}</p>
+      <p className='route-duration'>⏱ Duration: {route.duration} days</p>
+      <p className='route-budget'>💰 Budget: ${route.budget}</p>
+      <p className='route-weather'>☀️ Weather: {weather}</p>
 
       <button
+        className={`favorite-button ${isFavorite ? 'active' : ''}`}
         onClick={() => toggleFavorite(route.id)}
-        style={{
-          
-    }}
       >
-        {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+        {isFavorite ? '★ Remove Favorite' : '☆ Add Favorite'}
       </button>
 
-      <Link
-        to={`/route/${route.id}`}
-        style={{
-          textDecoration: 'none',
-          color: '#2563eb',
-          fontWeight: 'bold',
-        }}
-      >
+      <Link to={`/route/${route.id}`} className='details-link'>
         View Details →
       </Link>
     </div>

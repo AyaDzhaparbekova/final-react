@@ -33,11 +33,13 @@ export default function AddDestination({ onAdd }) {
         body: JSON.stringify(newTrip),
       });
 
-      if (!res.ok) throw new Error('Ошибка при добавлении');
+      if (!res.ok) throw new Error('Failed to add destination');
       const data = await res.json();
 
-      onAdd(data); 
-      alert('Новое направление добавлено!');
+      onAdd(data);
+      alert('Destination added successfully!');
+
+    
       setTitle('');
       setCountry('');
       setDuration('');

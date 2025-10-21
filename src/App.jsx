@@ -1,34 +1,62 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import './App.css';
+import AddDestination from './components/AddDestination';
 import Footer from './components/Footer';
+import Header from './components/Header';
+import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import Favorites from './pages/Favorites';
 import Home from './pages/Home';
 import RouteDetail from './pages/RouteDetail';
-import Favorites from './pages/Favorites';
-import './App.css';
+import SearchBar from './components/SearchBar';
 
-function App() {
+export default function App() {
   const [favorites, setFavorites] = useState([]);
 
-  const toggleFavorite = (id) => {
-    setFavorites(prev => 
-      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
-    );
+  const toggleFavorite = trip => {
+    setFavorites(prev => {
+      const exists = prev.find(f => f.id === trip.id);
+      return exists ? prev.filter(f => f.id !== trip.id) : [...prev, trip];
+    });
+  };
+
+  const handleAddDestination = newTrip => {
+    console.log('Added trip:', newTrip);
   };
 
   return (
     <Router>
       <Header />
-      <div style={{ padding: "20px" }}>
+      <div style={{ padding: '20px' }}>
         <Routes>
-          <Route path="/" element={<Home favorites={favorites} toggleFavorite={toggleFavorite} />} />
-          <Route path="/route/:id" element={<RouteDetail/>} />
-          <Route path="/favorites" element={<Favorites favorites={favorites} toggleFavorite={toggleFavorite} />} />
+          <Route
+            path='/'
+            element={
+              <Home favorites={favorites} toggleFavorite={toggleFavorite} />
+            }
+          />
+          <Route path='/route/:id' element={<RouteDetail />} />
+          <Route
+            path='/favorites'
+            element={
+              <ProtectedRoute>
+                <Favorites
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route path='/login' element={<Login />} />
+          {}
+          <Route
+            path='/add'
+            element={<AddDestination onAdd={handleAddDestination} />}
+          />
         </Routes>
       </div>
       <Footer />
     </Router>
   );
 }
-
-export default App;
